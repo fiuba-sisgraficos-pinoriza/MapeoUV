@@ -40,10 +40,10 @@
        vec2 auxUv=uv;
 
        float auxFrame = frame/6.0;
+       auxUv.x = floor(auxFrame)*0.25 - floor(auxFrame*0.25) + auxUv.x*0.25;
+       auxUv.y = (3.0 - floor(auxFrame*0.25))*0.25 + floor(auxFrame*0.25/4.0) + auxUv.y*0.25;
 
-       vUv = auxUv*0.25;
-       vUv.x = floor(auxFrame)*0.25 - floor(auxFrame*0.25) + auxUv.x*0.25;
-       vUv.y = (3.0 - floor(auxFrame*0.25))*0.25 + floor(auxFrame*0.25/4.0) + auxUv.y*0.25;
+       vUv = auxUv;
 
        gl_Position = projectionMatrix * modelViewMatrix * aux;
        
